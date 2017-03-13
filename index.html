@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport"  content="width=device-width,user-scalable=no">
+	<meta name="copyright" content="Copyright (c) TouchSlide 大话主席 2013">
+	<meta name="Keywords" content="TouchSlide, javascript触屏滑动特效插件, 移动终端滑动特效,触屏图片滑动, 触屏Tab切换,触屏多图切换等">
+	<meta name="description" content="TouchSlide, javascript触屏滑动特效插件, 移动终端滑动特效,触屏图片滑动, 触屏Tab切换,触屏多图切换等">
+	<title>TouchSlide 4.2网易Tab 触屏滑动特效插件 大话主席 </title>
+</head>
+
+<style type="text/css">
+	/* css 重置 */
+	body, p, input, h1, h2, h3, h4, h5, h6, ul, li, dl, dt, dd, form { margin: 0; padding: 0; list-style: none; vertical-align: middle; font-weight:normal; }
+	img { border:0; margin: 0; padding: 0;   }
+	body { color: #000; -webkit-user-select: none; -webkit-text-size-adjust: none; font:normal 16px/200% "微软雅黑", helvetica, arial; text-align:left;   }
+	header, section, footer { display: block; margin: 0; padding: 0 }
+	a{text-decoration:none;color:#000;}
+	
+	body{ background:#f4f4f4;  }
+
+	/* 内容 */
+	#content{ padding:10px 0; background:#fff;  }
+	.path{ padding:0 0 5px 5px;   }
+
+	/* 本例子css -------------------------------------- */
+	.tabBox{ margin:10px auto;   }
+	.tabBox .hd{position: relative; height:40px; line-height:40px; font-size:20px; overflow: hidden; background:#eee; border-top:1px solid #ccc; }
+	.tabBox .hd ul{position: absolute; }
+	.tabBox .hd ul li{ float:left;  padding:0 5px; vertical-align:top;  }
+	.tabBox .hd ul li.on a{ color:#B63B34; display:block; height:38px; line-height:38px;   border-bottom:2px solid #B63B34;  }
+	.tabBox .bd ul{ padding:10px;  }
+	.tabBox .bd ul li{ border-bottom:1px dotted #ddd;  }
+	.tabBox .bd li a{ -webkit-tap-highlight-color:rgba(0,0,0,0); }  /* 去掉链接触摸高亮 */
+
+</style>
+
+<body>
+
+	<div id="content">
+			<div class="path">当前效果：4.3 Tab自适应内容高度</div>
+
+			<!-- 本例主要代码 Start ================================ -->
+			<!-- Tab切换（高度自适应示范） -->
+			<div id="tabBox1" class="tabBox">
+				<div class="hd">
+					<ul>
+						<li><a href="javascript:void(0)">国内</a></li>
+						<li><a href="javascript:void(0)">国际额外</a></li>
+						<li><a href="javascript:void(0)">时事</a></li>
+						<li><a href="javascript:void(0)">让他额度</a></li>
+						<li><a href="javascript:void(0)">趣味额</a></li>
+						<li><a href="javascript:void(0)">时事的</a></li>
+						<li><a href="javascript:void(0)">国内士大夫</a></li>
+						<li><a href="javascript:void(0)">国际是</a></li>
+						<li><a href="javascript:void(0)">时事</a></li>
+						<li><a href="javascript:void(0)">时事的</a></li>
+						<li><a href="javascript:void(0)">国内士大夫</a></li>
+						<li><a href="javascript:void(0)">国际是</a></li>
+						<li><a href="javascript:void(0)">时事</a></li>
+					</ul>
+				</div>
+				<div class="bd" id="tabBox1-bd"><!-- 添加id，js用到 -->
+					<div class="con"><!-- 高度自适应需添加外层 -->
+						<ul>
+							<li><a href="#">官方明确感染H7N9高危人群</a></li>
+							<li><a href="#">台官员:将驱离进入钓岛大陆船</a></li>
+							<li><a href="#">陈云长子吁学江泽民思想方法</a></li>
+							<li><a href="#">央视批抗日剧目:比着俗争着二</a></li>
+							<li><a href="#">网友:离3次结3次可避税国五条</a></li>
+							<li><a href="#">足疗女子自称东北人引发血案</a></li>
+							<li><a href="#">男性神秘“根浴”会所被调查</a></li>
+							<li><a href="#">女孩一年吃掉48公里长方便面</a></li>
+						</ul>
+					</div>
+					<div class="con"><!-- 高度自适应需添加外层 -->
+						<ul>
+							<li><a href="#">日:沈阳军区部队开赴中朝边境</a></li>
+							<li><a href="#">印度核潜艇经我周边未被发现</a></li>
+							<li><a href="#">中国航母战斗群重防空轻反潜</a></li>
+							<li><a href="#">日本军车爆车胎造成一死一伤</a></li>
+						</ul>
+					</div>
+					<div class="con"><!-- 高度自适应需添加外层 -->
+						<ul>
+							<li><a href="#">农业占GDP低政府支持力度大</a></li>
+							<li><a href="#">林志玲:至今珍藏本山送的手绢</a></li>
+							<li><a href="#">五粮液高管年薪超茅台近一倍</a></li>
+							<li><a href="#">视频:朝鲜导弹反复出舱</a></li>
+							<li><a href="#">《我是歌手》明晚决赛开战</a></li>
+							<li><a href="#">皖新传媒一年花13亿委托理财</a></li>
+						</ul>
+					</div>
+					<div class="con"><!-- 高度自适应需添加外层 -->
+						<ul>
+							<li><a href="#">官方明确感染H7N9高危人群</a></li>
+							<li><a href="#">台官员:将驱离进入钓岛大陆船</a></li>
+							<li><a href="#">陈云长子吁学江泽民思想方法</a></li>
+							<li><a href="#">央视批抗日剧目:比着俗争着二</a></li>
+							<li><a href="#">网友:离3次结3次可避税国五条</a></li>
+							<li><a href="#">足疗女子自称东北人引发血案</a></li>
+							<li><a href="#">男性神秘“根浴”会所被调查</a></li>
+							<li><a href="#">女孩一年吃掉48公里长方便面</a></li>
+						</ul>
+					</div>
+					<div class="con">
+						<ul>
+							<li><a href="#">日:沈阳军区部队开赴中朝边境</a></li>
+							<li><a href="#">印度核潜艇经我周边未被发现</a></li>
+							<li><a href="#">中国航母战斗群重防空轻反潜</a></li>
+							<li><a href="#">日本军车爆车胎造成一死一伤</a></li>
+						</ul>
+					</div>
+					<div class="con">
+						<ul>
+							<li><a href="#">农业占GDP低政府支持力度大</a></li>
+							<li><a href="#">林志玲:至今珍藏本山送的手绢</a></li>
+							<li><a href="#">五粮液高管年薪超茅台近一倍</a></li>
+							<li><a href="#">视频:朝鲜导弹反复出舱</a></li>
+							<li><a href="#">《我是歌手》明晚决赛开战</a></li>
+							<li><a href="#">皖新传媒一年花13亿委托理财</a></li>
+						</ul>
+					</div>
+					<div class="con">
+						<ul>
+							<li><a href="#">官方明确感染H7N9高危人群</a></li>
+							<li><a href="#">台官员:将驱离进入钓岛大陆船</a></li>
+							<li><a href="#">陈云长子吁学江泽民思想方法</a></li>
+							<li><a href="#">央视批抗日剧目:比着俗争着二</a></li>
+							<li><a href="#">网友:离3次结3次可避税国五条</a></li>
+							<li><a href="#">足疗女子自称东北人引发血案</a></li>
+							<li><a href="#">男性神秘“根浴”会所被调查</a></li>
+							<li><a href="#">女孩一年吃掉48公里长方便面</a></li>
+						</ul>
+					</div>
+					<div class="con">
+						<ul>
+							<li><a href="#">日:沈阳军区部队开赴中朝边境</a></li>
+							<li><a href="#">印度核潜艇经我周边未被发现</a></li>
+							<li><a href="#">中国航母战斗群重防空轻反潜</a></li>
+							<li><a href="#">日本军车爆车胎造成一死一伤</a></li>
+						</ul>
+					</div>
+					<div class="con">
+						<ul>
+							<li><a href="#">农业占GDP低政府支持力度大</a></li>
+							<li><a href="#">林志玲:至今珍藏本山送的手绢</a></li>
+							<li><a href="#">五粮液高管年薪超茅台近一倍</a></li>
+							<li><a href="#">视频:朝鲜导弹反复出舱</a></li>
+							<li><a href="#">《我是歌手》明晚决赛开战</a></li>
+							<li><a href="#">皖新传媒一年花13亿委托理财</a></li>
+						</ul>
+					</div>
+					<div class="con">
+						<ul>
+							<li><a href="#">农业占GDP低政府支持力度大</a></li>
+							<li><a href="#">林志玲:至今珍藏本山送的手绢</a></li>
+							<li><a href="#">五粮液高管年薪超茅台近一倍</a></li>
+							<li><a href="#">视频:朝鲜导弹反复出舱</a></li>
+							<li><a href="#">《我是歌手》明晚决赛开战</a></li>
+							<li><a href="#">皖新传媒一年花13亿委托理财</a></li>
+						</ul>
+					</div>
+					<div class="con">
+						<ul>
+							<li><a href="#">官方明确感染H7N9高危人群</a></li>
+							<li><a href="#">台官员:将驱离进入钓岛大陆船</a></li>
+							<li><a href="#">陈云长子吁学江泽民思想方法</a></li>
+							<li><a href="#">央视批抗日剧目:比着俗争着二</a></li>
+							<li><a href="#">网友:离3次结3次可避税国五条</a></li>
+							<li><a href="#">足疗女子自称东北人引发血案</a></li>
+							<li><a href="#">男性神秘“根浴”会所被调查</a></li>
+							<li><a href="#">女孩一年吃掉48公里长方便面</a></li>
+						</ul>
+					</div>
+					<div class="con">
+						<ul>
+							<li><a href="#">日:沈阳军区部队开赴中朝边境</a></li>
+							<li><a href="#">印度核潜艇经我周边未被发现</a></li>
+							<li><a href="#">中国航母战斗群重防空轻反潜</a></li>
+							<li><a href="#">日本军车爆车胎造成一死一伤</a></li>
+						</ul>
+					</div>
+					<div class="con">
+						<ul>
+							<li><a href="#">农业占GDP低政府支持力度大</a></li>
+							<li><a href="#">林志玲:至今珍藏本山送的手绢</a></li>
+							<li><a href="#">五粮液高管年薪超茅台近一倍</a></li>
+							<li><a href="#">视频:朝鲜导弹反复出舱</a></li>
+							<li><a href="#">《我是歌手》明晚决赛开战</a></li>
+							<li><a href="#">皖新传媒一年花13亿委托理财</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- 本例主要代码 End ================================ -->
+	</div>
+	<script src="./zepto.min.js"></script>
+	<script src="./zepto.fx.module.js"></script>
+	<script src="./zepto.touch.module.js"></script>
+	<script src="./TouchSlide.1.1.xx.js"></script>
+
+	<script type="text/javascript">
+		// 扩展zepto属性outerWidth or outerHeight
+		(function($){
+		    "use strict";
+		    ['width','height'].forEach(function(dimension){
+		        var Dimension = dimension.replace(/./,function(m){
+		            return m[0].toUpperCase();
+		        });
+		        //outerWidth or outerHeight
+		        $.fn['outer' + Dimension] = function(margin) {
+		            var elem = this;
+		            if(elem) {
+		                // elem.width(); or  elem.height();
+		                var size = elem[dimension]();
+		                var sides = {
+		                    'width' : ['left', 'right'],
+		                    'height' : ['top', 'bottom']
+		                };
+		                sides[dimension].forEach(function(side){
+		                    if(margin) {
+		                        size += parseInt(elem.css('margin-'+side),10);
+		                    }
+		                });
+		                return size;
+		            } else {
+		                return null;
+		            }
+		        }
+		    });
+		})($);
+		
+		Zepto(function($){
+			var $tabBox1_hd = $("#tabBox1 .hd ul");
+			var $tabBox1_hd_li = $("#tabBox1 .hd ul li");
+			var $tabBox1_hd_li_left = [];//存储li宽度
+
+			var totle_width=0;//头部标签总长
+			var totle_width_n = 0; //头部标签总长是屏幕宽度的整数倍
+			var totle_width_y = 0; //头部标签总长取屏幕宽度的余数
+			var totle_width_x = 0; //头部标签最多滚动距离
+			var totle_width_w = window.screen.width; //屏幕宽度
+			(function(){
+				for (var n=0;n<$tabBox1_hd_li.length;n++){
+					$tabBox1_hd_li_left[n]=$tabBox1_hd_li.eq(n).outerWidth();
+					totle_width += $tabBox1_hd_li.eq(n).outerWidth();
+				}
+			})();
+			
+			//取整数
+			if(totle_width >= totle_width_w ){ totle_width_n = parseInt( totle_width / totle_width_w)};
+			// 取余数
+			totle_width_y = totle_width % totle_width_w;
+			// 计算tab头部滚动右侧最大溢出值
+			totle_width_x = totle_width_n >= 1&&((totle_width_n-1)*totle_width_w) + totle_width_y;
+
+
+
+			//计算游标项（初始化值为屏幕内倒数第二项)用于滚动bd定位hd
+			var YOUBIAO = youbiao_tab = 0;//游标项
+			(function(){
+				var _width = 0;
+				for(var j=0;j<$tabBox1_hd_li_left.length;j++){
+					_width+=$tabBox1_hd_li_left[j];
+					if (_width > totle_width_w) {
+						YOUBIAO = youbiao_tab = j-2;
+						break;
+					}
+				}
+			})();
+
+			console.log(youbiao_tab)
+
+			TouchSlide( { slideCell:"#tabBox1",
+				effect:"leftLoop",
+				HdMoveFun:function(x){//x为移动距离
+					if (totle_width_n ==0)return;//头部宽度没有屏幕宽不能滑动头部
+					//滑动hd执行
+					var hd_offset = parseInt($tabBox1_hd.css('left').replace(/px/, "")) + 2*x;
+					$tabBox1_hd.animate({"left":hd_offset},200);
+					//判断溢出
+					setTimeout(function(){
+						if(x>0){
+							//console.log("a");
+							// 判断tab头部滚动左侧溢出
+							if($tabBox1_hd_li.eq(0).offset().left>0){
+								$tabBox1_hd.animate({"left":0},20);
+							}
+						}else{
+							// 判断判断tab头部滚动右侧溢出
+							if(-parseInt($tabBox1_hd.css('left').replace(/px/, "")) > totle_width_x){
+								$tabBox1_hd.animate({"left":-totle_width_x},20);
+							}
+						}
+					},200)
+				},
+				endFun:function(i,c){//i是当前第几个tab c是总计多少个tab
+					//高度自适应
+					var bd = document.getElementById("tabBox1-bd");
+					// bd.parentNode.style.height = window.screen.height +"px";
+					// bd.parentNode.style.height = window.screen.height - document.body.clientHeight + bd.children[i].children[0].offsetHeight +"px";
+					// bd.parentNode.style.height = bd.children[i].children[0].offsetHeight+"px";
+					// if(i>0)bd.parentNode.style.transition="200ms";//添加动画效果
+
+					//滑动bd滚动hd
+					if (totle_width_n ==0)return;//头部宽度没有屏幕宽不能滑动头部
+
+					//始终将头部定位到第2个位子
+					// var widths = 0;
+					// for(var j=0;j<i-1;j++){
+					// 	widths += $tabBox1_hd_li_left[j];
+					// }
+					// $tabBox1_hd.animate({"left":-widths},400);
+
+					//将将头部定位到倒数第2项
+					function move_tab(i){
+						var widths = 0;
+						var n = 0;
+						i == c-1 ? n = youbiao_tab+1 : n = youbiao_tab;//判断当前项是否是最后一项
+						for(var j = n ; j < i; j++){
+							widths += $tabBox1_hd_li_left[j+1];
+						}
+						$tabBox1_hd.animate({"left":-widths},400);
+					}
+
+					if(i > youbiao_tab){ //判断当前项是否大于游标项
+						move_tab(i);
+					}else{
+						$tabBox1_hd.animate({"left":0},400);
+					}
+					
+				}
+
+			});
+		})
+	</script>
+</body>
+</html>
