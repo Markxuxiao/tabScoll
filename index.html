@@ -7,7 +7,7 @@
 	<meta name="copyright" content="Copyright (c) TouchSlide 大话主席 2013">
 	<meta name="Keywords" content="TouchSlide, javascript触屏滑动特效插件, 移动终端滑动特效,触屏图片滑动, 触屏Tab切换,触屏多图切换等">
 	<meta name="description" content="TouchSlide, javascript触屏滑动特效插件, 移动终端滑动特效,触屏图片滑动, 触屏Tab切换,触屏多图切换等">
-	<title>TouchSlide 4.2网易Tab 触屏滑动特效插件 大话主席 </title>
+	<title>TouchSlide 4.2 改造Tab头部可触屏滑动特效插件-mandk@qq.com</title>
 </head>
 
 <style type="text/css">
@@ -27,7 +27,7 @@
 	/* 本例子css -------------------------------------- */
 	.tabBox{ margin:10px auto;   }
 	.tabBox .hd{position: relative; height:40px; line-height:40px; font-size:20px; overflow: hidden; background:#eee; border-top:1px solid #ccc; }
-	.tabBox .hd ul{position: absolute; }
+	.tabBox .hd ul{position: absolute; width: 2000px;}
 	.tabBox .hd ul li{ float:left;  padding:0 5px; vertical-align:top;  }
 	.tabBox .hd ul li.on a{ color:#B63B34; display:block; height:38px; line-height:38px;   border-bottom:2px solid #B63B34;  }
 	.tabBox .bd ul{ padding:10px;  }
@@ -39,7 +39,7 @@
 <body>
 
 	<div id="content">
-			<div class="path">当前效果：4.3 Tab自适应内容高度</div>
+			<div class="path">TouchSlide 4.2 改造Tab头部可触屏滑动特效插件</div>
 
 			<!-- 本例主要代码 Start ================================ -->
 			<!-- Tab切换（高度自适应示范） -->
@@ -249,6 +249,7 @@
 					$tabBox1_hd_li_left[n]=$tabBox1_hd_li.eq(n).outerWidth();
 					totle_width += $tabBox1_hd_li.eq(n).outerWidth();
 				}
+				console.log($tabBox1_hd_li_left)
 			})();
 			
 			//取整数
@@ -257,8 +258,6 @@
 			totle_width_y = totle_width % totle_width_w;
 			// 计算tab头部滚动右侧最大溢出值
 			totle_width_x = totle_width_n >= 1&&((totle_width_n-1)*totle_width_w) + totle_width_y;
-
-
 
 			//计算游标项（初始化值为屏幕内倒数第二项)用于滚动bd定位hd
 			var YOUBIAO = youbiao_tab = 0;//游标项
@@ -272,8 +271,6 @@
 					}
 				}
 			})();
-
-			console.log(youbiao_tab)
 
 			TouchSlide( { slideCell:"#tabBox1",
 				effect:"leftLoop",
@@ -309,22 +306,16 @@
 					//滑动bd滚动hd
 					if (totle_width_n ==0)return;//头部宽度没有屏幕宽不能滑动头部
 
-					//始终将头部定位到第2个位子
-					// var widths = 0;
-					// for(var j=0;j<i-1;j++){
-					// 	widths += $tabBox1_hd_li_left[j];
-					// }
-					// $tabBox1_hd.animate({"left":-widths},400);
-
 					//将将头部定位到倒数第2项
 					function move_tab(i){
 						var widths = 0;
 						var n = 0;
-						i == c-1 ? n = youbiao_tab+1 : n = youbiao_tab;//判断当前项是否是最后一项
-						for(var j = n ; j < i; j++){
-							widths += $tabBox1_hd_li_left[j+1];
+						i == c-1 ? n = i-1 : n = i;//判断当前项是否是最后一项
+						for(var j = youbiao_tab ; j < n; j++){
+							widths += $tabBox1_hd_li_left[j+2];
 						}
 						$tabBox1_hd.animate({"left":-widths},400);
+						console.log(widths)
 					}
 
 					if(i > youbiao_tab){ //判断当前项是否大于游标项
