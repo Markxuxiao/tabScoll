@@ -296,15 +296,12 @@
 					},200)
 				},
 				endFun:function(i,c){//i是当前第几个tab c是总计多少个tab
-					//高度自适应
 					var bd = document.getElementById("tabBox1-bd");
-					// bd.parentNode.style.height = window.screen.height +"px";
-					// bd.parentNode.style.height = window.screen.height - document.body.clientHeight + bd.children[i].children[0].offsetHeight +"px";
-					// bd.parentNode.style.height = bd.children[i].children[0].offsetHeight+"px";
-					// if(i>0)bd.parentNode.style.transition="200ms";//添加动画效果
-
-					//滑动bd滚动hd
-					if (totle_width_n ==0)return;//头部宽度没有屏幕宽不能滑动头部
+					var bd_height = window.screen.height - 104;
+					var bd_item_height = bd.children[i+1].children[0].scrollHeight;
+					if(bd_item_height > bd_height){bd_height = bd_item_height};
+					bd.parentNode.style.height = bd_height+"px";
+					if(i>0)bd.parentNode.style.transition="200ms";//添加动画效果
 
 					//将将头部定位到倒数第2项
 					function move_tab(i){
@@ -315,7 +312,7 @@
 							widths += $tabBox1_hd_li_left[j+2];
 						}
 						$tabBox1_hd.animate({"left":-widths},400);
-						console.log(widths)
+						
 					}
 
 					if(i > youbiao_tab){ //判断当前项是否大于游标项
